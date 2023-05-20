@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import clases.alumnos;
 import mysql.metodos;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -31,7 +32,7 @@ public class versolo extends JPanel {
 		setLayout(null);
 		
 		panel_centro.setLayout(null);
-		panel_centro.setBackground(Color.YELLOW);
+		panel_centro.setBackground(new Color(192, 192, 192));
 		panel_centro.setBounds(0, 0, 546, 380);
 		add(panel_centro);
 		
@@ -68,6 +69,12 @@ public class versolo extends JPanel {
 		btn_buscar.setFont(new Font("Arial", Font.PLAIN, 16));
 		btn_buscar.setBounds(202, 175, 141, 27);
 		panel_centro.add(btn_buscar);
+		
+		JLabel lbl_fondo = new JLabel("");
+		lbl_fondo.setBounds(0, 0, 546, 380);
+		lbl_fondo.setIcon(new ImageIcon("img/fondo4.jpg"));
+
+		panel_centro.add(lbl_fondo);
 		
 	}
 	public void mostrarbotones() {
