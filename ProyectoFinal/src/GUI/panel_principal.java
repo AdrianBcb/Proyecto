@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class panel_principal extends JFrame {
 
@@ -21,6 +23,10 @@ public class panel_principal extends JFrame {
 	 */
 	private static final long serialVersionUID = -3897192868953116032L;
 	private JPanel contentPane;
+	private JLabel lbl_nada1 = new JLabel("www.myheroacademia.com.mx");
+	private JLabel lbl_fondoinicio = new JLabel("");
+	private JLabel lbl_bienv = new JLabel("Hola, Bienvenido.");
+	private JPanel panel_cambios = new JPanel();
 
 	/**
 	 * Launch the application.
@@ -42,6 +48,7 @@ public class panel_principal extends JFrame {
 	 * Create the frame.
 	 */
 	public panel_principal() {
+//AREA_PANEL
 		
 		setBackground(new Color(255, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,7 +65,6 @@ public class panel_principal extends JFrame {
 		contentPane.add(panel_menu);
 		panel_menu.setLayout(null);
 		
-		JPanel panel_cambios = new JPanel();
 		panel_cambios.setBackground(new Color(255, 255, 255));
 		panel_cambios.setBounds(210, 56, 566, 447);
 		contentPane.add(panel_cambios);
@@ -69,42 +75,36 @@ public class panel_principal extends JFrame {
 		panel_menu.add(panel_logo);
 		panel_logo.setLayout(null);
 		
-		JLabel lbl_img = new JLabel("");
-		lbl_img.setBounds(0, 0, 170, 100);
-		panel_logo.add(lbl_img);
-		lbl_img.setIcon(new ImageIcon("img/logo-chico.jpg"));
-
-		
-
 		JPanel panel_arriba = new JPanel();
 		panel_arriba.setBounds(10, 10, 766, 33);
 		contentPane.add(panel_arriba);
 		panel_arriba.setLayout(null);
 		
 		JPanel panel_logom = new JPanel();
+		panel_logom.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cargarinicio();
+			}
+		});
 		panel_logom.setBackground(new Color(255, 255, 255));
 		panel_logom.setBounds(0, 0, 46, 33);
 		panel_arriba.add(panel_logom);
 		
 		
 		
-		JLabel lbl_bienv = new JLabel("Hola, Bienvenido.");
-		lbl_bienv.setBackground(new Color(0, 0, 255));
-		lbl_bienv.setForeground(new Color(255, 255, 255));
-		lbl_bienv.setFont(new Font("Arial", Font.BOLD, 20));
-		lbl_bienv.setBounds(190, 92, 186, 32);
-		panel_cambios.add(lbl_bienv);
 		
-		JLabel lbl_nada1 = new JLabel("www.myheroacademia.com.mx");
-		lbl_nada1.setForeground(new Color(255, 255, 255));
-		lbl_nada1.setBounds(178, 420, 210, 17);
-		panel_cambios.add(lbl_nada1);
-		lbl_nada1.setFont(new Font("Arial", Font.PLAIN, 14));
+//AREA_LABEL
 		
-		JLabel lbl_fondoinicio = new JLabel("");
-		lbl_fondoinicio.setBounds(0, 0, 566, 447);
-		panel_cambios.add(lbl_fondoinicio);
-		lbl_fondoinicio.setIcon(new ImageIcon("img/fondo3.jpg"));
+		
+		JLabel lbl_img = new JLabel("");
+		lbl_img.setBounds(0, 0, 170, 100);
+		panel_logo.add(lbl_img);
+		lbl_img.setIcon(new ImageIcon("img/logo-chico.jpg"));
+
+
+		
+		cargarinicio();
 
 		JLabel lbl_titulo = new JLabel("My Hero Academia");
 		lbl_titulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -113,11 +113,7 @@ public class panel_principal extends JFrame {
 		panel_arriba.add(lbl_titulo);
 		
 		
-		
-		
-		
-		
-		
+//AREA_DE_BOTONES:
 		
 		JButton btnR = new JButton("Registro");
 		btnR.setBounds(10, 139, 170, 34);
@@ -180,4 +176,26 @@ public class panel_principal extends JFrame {
 		
 		
 	}
+	
+	
+	
+	
+	
+	public void cargarinicio(){
+		panel_cambios.removeAll();
+		lbl_nada1.setForeground(new Color(255, 255, 255));
+		lbl_nada1.setBounds(178, 420, 210, 17);
+		panel_cambios.add(lbl_nada1);
+		lbl_nada1.setFont(new Font("Arial", Font.PLAIN, 14));
+		lbl_bienv.setBackground(new Color(0, 0, 255));
+		lbl_bienv.setForeground(new Color(255, 255, 255));
+		lbl_bienv.setFont(new Font("Arial", Font.BOLD, 20));
+		lbl_bienv.setBounds(190, 92, 186, 32);
+		panel_cambios.add(lbl_bienv);
+		lbl_fondoinicio.setBounds(0, 0, 566, 447);
+		panel_cambios.add(lbl_fondoinicio);
+		lbl_fondoinicio.setIcon(new ImageIcon("img/fondo3.jpg"));
+		panel_cambios.repaint();
+		
+		}
 }

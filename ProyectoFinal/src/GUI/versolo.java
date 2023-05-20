@@ -36,7 +36,7 @@ public class versolo extends JPanel {
 		setLayout(null);
 		
 		panel_centro.setLayout(null);
-		panel_centro.setBackground(new Color(192, 192, 192));
+		panel_centro.setBackground(new Color(0, 255, 0));
 		panel_centro.setBounds(0, 0, 546, 380);
 		add(panel_centro);
 		
@@ -76,7 +76,7 @@ public class versolo extends JPanel {
 		
 		JLabel lbl_fondo = new JLabel("");
 		lbl_fondo.setBounds(0, 0, 546, 380);
-		lbl_fondo.setIcon(new ImageIcon("img/fondo4.jpg"));
+		lbl_fondo.setIcon(new ImageIcon("img/fondo5.jpg"));
 
 		panel_centro.add(lbl_fondo);
 		
