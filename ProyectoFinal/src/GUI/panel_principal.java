@@ -8,17 +8,18 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 public class panel_principal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3897192868953116032L;
 	private JPanel contentPane;
 
 	/**

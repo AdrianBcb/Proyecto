@@ -3,18 +3,16 @@ package GUI;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JSlider;
-import javax.swing.JMenuBar;
-import java.awt.FlowLayout;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
 
 public class Buscador extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5237607785177084098L;
 
 	/**
 	 * Create the panel.

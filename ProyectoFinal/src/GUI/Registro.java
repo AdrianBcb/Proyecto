@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 
-import clases.Persona;
 import mysql.metodos;
 
 import java.awt.event.ActionListener;
@@ -17,6 +16,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
 public class Registro extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textField_nombre;
 	private JTextField textField_apelllidos;
 	private JTextField textField_direccion;

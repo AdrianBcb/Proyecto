@@ -16,6 +16,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JList;
 
 public class versolo extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7126511588532326492L;
 	private JTextField textField;
 	private metodos m = new metodos();
 	private JPanel panel_centro = new JPanel();
