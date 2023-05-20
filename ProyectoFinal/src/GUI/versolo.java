@@ -56,6 +56,7 @@ public class versolo extends JPanel {
 		
 		
 		JButton btn_buscar = new JButton("Buscar");
+		btn_buscar.setFocusPainted(false);
 		btn_buscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombreabuscar = textField.getText();
@@ -76,7 +77,7 @@ public class versolo extends JPanel {
 		
 		JLabel lbl_fondo = new JLabel("");
 		lbl_fondo.setBounds(0, 0, 546, 380);
-		lbl_fondo.setIcon(new ImageIcon("img/fondo5.jpg"));
+		lbl_fondo.setIcon(new ImageIcon("img/fondo5.png"));
 
 		panel_centro.add(lbl_fondo);
 		

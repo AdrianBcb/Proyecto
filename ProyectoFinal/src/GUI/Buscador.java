@@ -19,18 +19,18 @@ public class Buscador extends JPanel {
 	 */
 	public Buscador() {
 		setLayout(null);
-		
+//PANELES
 		JPanel panel_centro = new JPanel();
 		panel_centro.setLayout(null);
 		panel_centro.setBackground(new Color(255, 255, 0));
-		panel_centro.setBounds(0, 46, 546, 380);
+		panel_centro.setBounds(0, 46, 546, 381);
 		add(panel_centro);
-		/////inicia_cargado_panel_buscar_por_nombre
-//		versolo solo = new versolo();
-//		solo.setBounds(10, 10, 526, 360);
-//		panel_centro.add(solo);
-//		solo.setVisible(true);
-		////////////////////////////
+/////inicia_cargado_panel_buscar_por_nombre
+		versolo solo = new versolo();
+		solo.setBounds(0,0, 546, 381);
+		panel_centro.add(solo);
+		solo.setVisible(true);
+////////////////////////////
 
 		JPanel panel_arriba = new JPanel();
 		panel_arriba.setBackground(new Color(0, 0, 0));
@@ -42,10 +42,11 @@ public class Buscador extends JPanel {
 		
 		
 		
-		
+//BOTONES
 		
 		
 		JButton btn_bn = new JButton("Buscar por nombre");
+		btn_bn.setFocusPainted(false);
 		btn_bn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_centro.removeAll();
@@ -63,6 +64,7 @@ public class Buscador extends JPanel {
 		panel_arriba.add(btn_bn);
 		
 		JButton btn_vc = new JButton("Ver clases");
+		btn_vc.setFocusPainted(false);
 		btn_vc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_centro.removeAll();

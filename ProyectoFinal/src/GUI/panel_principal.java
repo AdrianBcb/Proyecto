@@ -60,7 +60,7 @@ public class panel_principal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel_menu = new JPanel();
-		panel_menu.setBackground(new Color(255, 255, 255));
+		panel_menu.setBackground(new Color(56, 100, 139));
 		panel_menu.setBounds(10, 56, 190, 447);
 		contentPane.add(panel_menu);
 		panel_menu.setLayout(null);
@@ -76,7 +76,8 @@ public class panel_principal extends JFrame {
 		panel_logo.setLayout(null);
 		
 		JPanel panel_arriba = new JPanel();
-		panel_arriba.setBounds(10, 10, 766, 33);
+		panel_arriba.setBackground(new Color(255, 255, 255));
+		panel_arriba.setBounds(10, 10, 766, 36);
 		contentPane.add(panel_arriba);
 		panel_arriba.setLayout(null);
 		
@@ -88,8 +89,9 @@ public class panel_principal extends JFrame {
 			}
 		});
 		panel_logom.setBackground(new Color(255, 255, 255));
-		panel_logom.setBounds(0, 0, 46, 33);
+		panel_logom.setBounds(0, 0, 47, 36);
 		panel_arriba.add(panel_logom);
+		panel_logom.setLayout(null);
 		
 		
 		
@@ -101,6 +103,13 @@ public class panel_principal extends JFrame {
 		lbl_img.setBounds(0, 0, 170, 100);
 		panel_logo.add(lbl_img);
 		lbl_img.setIcon(new ImageIcon("img/logo-chico.jpg"));
+
+		JLabel lbl_inicio = new JLabel("");
+		lbl_inicio.setBounds(4, 1, 38, 33);
+		panel_logom.add(lbl_inicio);
+		lbl_inicio.setIcon(new ImageIcon("img/inicio2.jpg"));
+
+		
 
 
 		
@@ -116,6 +125,8 @@ public class panel_principal extends JFrame {
 //AREA_DE_BOTONES:
 		
 		JButton btnR = new JButton("Registro");
+		btnR.setFocusTraversalPolicyProvider(true);
+		btnR.setFocusable(false);
 		btnR.setBounds(10, 139, 170, 34);
 		panel_menu.add(btnR);
 		btnR.addActionListener(new ActionListener() {
@@ -131,9 +142,11 @@ public class panel_principal extends JFrame {
 			}
 		});
 		btnR.setFont(new Font("Arial", Font.PLAIN, 16));
-		btnR.setBackground(null);
+		btnR.setBackground(Color.white); 
+        btnR.setForeground(Color.black);
 		
 		JButton btnBusqueda = new JButton("Busqueda");
+		btnBusqueda.setFocusPainted(false);
 		btnBusqueda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -146,11 +159,13 @@ public class panel_principal extends JFrame {
 			}
 		});
 		btnBusqueda.setFont(new Font("Arial", Font.PLAIN, 16));
-		btnBusqueda.setBackground((Color) null);
+		btnBusqueda.setBackground(Color.white); 
+        btnBusqueda.setForeground(Color.black);
 		btnBusqueda.setBounds(10, 201, 170, 34);
 		panel_menu.add(btnBusqueda);
 		
 		JButton btnAdministracin = new JButton("Administración");
+		btnAdministracin.setFocusPainted(false);
 		btnAdministracin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//estebotonsinosdatiempolohacemosnadamas_
@@ -158,18 +173,21 @@ public class panel_principal extends JFrame {
 			}
 		});
 		btnAdministracin.setFont(new Font("Arial", Font.PLAIN, 16));
-		btnAdministracin.setBackground((Color) null);
+		btnAdministracin.setBackground(Color.white); 
+		btnAdministracin.setForeground(Color.black);
 		btnAdministracin.setBounds(10, 262, 170, 34);
 		panel_menu.add(btnAdministracin);
 		
 		JButton btnSalir = new JButton("Salir");
+		btnSalir.setFocusPainted(false);
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_principal.this.setVisible(false);
 			}
 		});
 		btnSalir.setFont(new Font("Arial", Font.PLAIN, 16));
-		btnSalir.setBackground((Color) null);
+		btnSalir.setBackground(Color.white); 
+		btnSalir.setForeground(Color.black);
 		btnSalir.setBounds(10, 403, 170, 34);
 		panel_menu.add(btnSalir);
 		
