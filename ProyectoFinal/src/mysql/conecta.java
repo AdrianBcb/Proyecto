@@ -1,29 +1,26 @@
 package mysql;
 import java.sql.*;
+
+import clases.alumnos;
 public class conecta {
-
+	static String url1 = "jdbc:mysql://127.0.0.1:3306/Escuela";
+    static String user = "root";
+    static  String password = "Tredex$03";
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		try {
-			//Conectarse a la base de datos
-		    //Connection MyConn = DriverManager.getConnection("jdbc: mysql://localhost:8889/tienda","root","");
-		    String url1 = "jdbc:mysql://127.0.0.1:3306/base";
-            String user = "root";
-            String password = "05Lanabe";
-
+		try { 
             Connection MyConn = DriverManager.getConnection(url1, user, password);
-            
 		    Statement myStmt  = MyConn.createStatement();
-		    //Ejecuto el query o consulta a la bd
-		    ResultSet myRs=  myStmt.executeQuery("select * from clientes");
-		    //Proceso lo resultados
+		    ResultSet myRs=  myStmt.executeQuery("select * from alumnos");
+
 		    while(myRs.next()) { 
 		    	  System.out.println(myRs.getString("Nombre"));
 		    }
 	     }
+		
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
+	
 }

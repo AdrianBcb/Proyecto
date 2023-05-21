@@ -14,6 +14,7 @@ import mysql.metodos;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class Registro extends JPanel {
 	/**
@@ -76,11 +77,14 @@ public class Registro extends JPanel {
 		
 
 		JComboBox comboBox_na = new JComboBox();
+		comboBox_na.setModel(new DefaultComboBoxModel(new String[] {"Mexicana"}));
 		comboBox_na.setFont(new Font("Arial", Font.PLAIN, 14));
 		comboBox_na.setBounds(242, 175, 153, 20);
 		panel_1.add(comboBox_na);
 		
 		JComboBox comboBox_se = new JComboBox();
+		comboBox_se.setToolTipText("");
+		comboBox_se.setModel(new DefaultComboBoxModel(new String[] {"H", "M"}));
 		comboBox_se.setFont(new Font("Arial", Font.PLAIN, 14));
 		comboBox_se.setBounds(242, 135, 153, 20);
 		panel_1.add(comboBox_se);
@@ -115,7 +119,21 @@ public class Registro extends JPanel {
 		JButton btn_registrar = new JButton("Registrar");
 		btn_registrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			//	alumnos alumnoR = new Persona(textField_nombre.getText(), textField_apelllidos.getText(),
+				String nombre=textField_nombre.getText();
+				String apellido=textField_apelllidos.getText();
+				String direccion=textField_direccion.getText();
+				String sexo=String.valueOf(comboBox_se.getSelectedIndex());
+				String nacionalidad=String.valueOf(comboBox_na.getSelectedIndex());
+				String tutor=textField_tutor.getText();
+				String telefono=textField_telefono.getText();
+				m.registrar(nombre, apellido, sexo, nacionalidad, tutor, telefono, direccion);
+				textField_nombre.setText("");
+				textField_apelllidos.setText("");
+				textField_direccion.setText("");
+				textField_tutor.setText("");
+				textField_telefono.setText("");
+				
+				//	alumnos alumnoR = new Persona(textField_nombre.getText(), textField_apelllidos.getText(),
 				//		textField_direccion.getText(), textField_sexo.getText(), ABORTa,textField.naciona TOOL_TIP_TEXT_KEY);
 			//	m.registrar(alumnoR);
 				
