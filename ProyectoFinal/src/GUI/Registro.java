@@ -120,13 +120,13 @@ public class Registro extends JPanel {
 		btn_registrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombre=textField_nombre.getText();
-				String apellido=textField_apelllidos.getText();
+				String apellidos=textField_apelllidos.getText();
 				String direccion=textField_direccion.getText();
 				String sexo=String.valueOf(comboBox_se.getSelectedIndex());
 				String nacionalidad=String.valueOf(comboBox_na.getSelectedIndex());
 				String tutor=textField_tutor.getText();
 				String telefono=textField_telefono.getText();
-				m.registrar(nombre, apellido, sexo, nacionalidad, tutor, telefono, direccion);
+				m.registrar(nombre, apellidos, direccion, sexo, nacionalidad, tutor, telefono);
 				textField_nombre.setText("");
 				textField_apelllidos.setText("");
 				textField_direccion.setText("");
