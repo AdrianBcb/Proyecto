@@ -123,7 +123,7 @@ public class panel_principal extends JFrame {
 		
 		
 //AREA_DE_BOTONES:
-		
+
 		JButton btnR = new JButton("Registro");
 		btnR.setFocusTraversalPolicyProvider(true);
 		btnR.setFocusable(false);

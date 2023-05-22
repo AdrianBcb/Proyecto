@@ -67,6 +67,8 @@ public class versolo extends JPanel {
 				
 				//es_AQUI_DONDE_SE_DECIDE_SI_SE_MUESTRAN_LOS_BOTONES_O_NO
 				if (resultado!=false) {
+					
+					//
 					mostrarbotones();
 					JOptionPane.showMessageDialog(btn_buscar, "Se ha encontrado a"+nombreabuscar);
 				}else {
@@ -76,7 +78,7 @@ public class versolo extends JPanel {
 			}
 		});
 		btn_buscar.setFont(new Font("Arial", Font.PLAIN, 16));
-		btn_buscar.setBounds(202, 175, 141, 27);
+		btn_buscar.setBounds(202, 173, 141, 27);
 		panel_centro.add(btn_buscar);
 		
 		JLabel lbl_fondo = new JLabel("");

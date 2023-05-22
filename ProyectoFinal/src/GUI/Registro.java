@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
-
 import mysql.metodos;
 
 import java.awt.event.ActionListener;
@@ -129,6 +128,7 @@ public class Registro extends JPanel {
 		JButton btn_registrar = new JButton("Registrar");
 		btn_registrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String nombre=textField_nombre.getText();
 				String apellidos=textField_apelllidos.getText();
 				String direccion=textField_direccion.getText();

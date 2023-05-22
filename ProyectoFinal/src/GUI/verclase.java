@@ -1,6 +1,8 @@
 package GUI;
 
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import clases.alumnos;
 import mysql.metodos;
@@ -8,10 +10,16 @@ import mysql.metodos;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
 public class verclase extends JPanel {
@@ -19,6 +27,8 @@ private metodos m = new metodos();
 private JButton btn_quitar = new JButton("Dar de baja");
 private JButton btn_edit = new JButton("Editar Alumno");
 private JPanel panel_centro = new JPanel();
+DefaultListModel<String> modelo = new DefaultListModel<>();
+int i=0;
 
 	/**
 	 * Create the panel.
@@ -31,43 +41,110 @@ private JPanel panel_centro = new JPanel();
 		panel_centro.setBounds(0, 0, 546, 380);
 		add(panel_centro);
 
-		
-		
-		JComboBox comboBox_clases = new JComboBox();
-		comboBox_clases.setBounds(199, 45, 268, 26);
-		panel_centro.add(comboBox_clases);
-		
 		JList list = new JList();
+		list.setModel(modelo);
 		list.setBackground(new Color(255, 255, 255));
 		list.setBounds(118, 92, 310, 171);
 		panel_centro.add(list);
 		
-		JLabel lbl_fondo = new JLabel("");
-		lbl_fondo.setBounds(0, 0, 546, 380);
-		panel_centro.add(lbl_fondo);
-		
 		JLabel lbl_nada = new JLabel("Clase:");
+		lbl_nada.setForeground(new Color(255, 255, 255));
 		lbl_nada.setFont(new Font("Arial", Font.PLAIN, 15));
 		lbl_nada.setBounds(85, 46, 102, 22);
 		panel_centro.add(lbl_nada);
+		
+		JComboBox comboBox_clases = new JComboBox();
+		comboBox_clases.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (comboBox_clases.getSelectedItem() != "selecciona") {
+					//mostrarbotones();
+				
+				modelo.removeAllElements();
+				i=0;
+				list.removeAll();
+				list.repaint();
+				quitarbotones();
+				panel_centro.repaint();
+				String claseamostrar=(String) comboBox_clases.getSelectedItem();
+				ResultSet resultado = m.verclase(claseamostrar);
+				try {
+					while(resultado.next()) {
+					//	resultado.get
+						String enclase = resultado.getString("Nombre")+"          "+ resultado.getString("Apellidos");
+						modelo.add(i, enclase);
+						i++;
+							}
+				} catch (SQLException h) {
+					// TODO Auto-generated catch block
+					h.printStackTrace();
+				}
+			//	list.add(null, resultado.getUpdateCount());
+				
+				}else {
+					quitarbotones();
+					
+				}
+				
+				
+			}
+		});
+		comboBox_clases.setModel(new DefaultComboBoxModel(new String[] {"Literatura", "Muai Tai", "Kung Fu"}));
+		comboBox_clases.setBounds(199, 45, 268, 26);
+		panel_centro.add(comboBox_clases);
+		
+		JLabel lbl_fondo = new JLabel("");
+		lbl_fondo.setIcon(new ImageIcon("img/fondo7.jpg"));
+		
+				lbl_fondo.setBounds(0, 0, 546, 380);
+				panel_centro.add(lbl_fondo);
+		
+		
 
 //BOTON
-		String nombreabuscar="o";//jalar_de_la_lista
-		alumnos resultado = m.buscar(nombreabuscar);
-		//insertacodigochidoparaversiyase_seleccionóalgode_LA_JLIST_XD
-
-		//es_AQUI_DONDE_SE_DECIDE_SI_SE_MUESTRAN_LOS_BOTONES_O_NO
-		if (resultado==null) {
+		if (list.getSelectedValue()!=null) {
 			mostrarbotones();
 		}else {
 			quitarbotones();
 		}
+	
+		 list.addListSelectionListener(new ListSelectionListener() {
+	            @Override
+	            public void valueChanged(ListSelectionEvent e) {
+	            	
+	            	
+	            	if (list.getSelectedValue()!=null) {
+	        			mostrarbotones();
+	        		}else {
+	        			quitarbotones();
+	        		}
+	        	
+//	            	
+//	            	
+//	                if (!e.getValueIsAdjusting()) {
+//	                    // Obtener el elemento seleccionado
+//	                    String seleccionado = list.getSelectedValue();
+//	                    // Realizar la acción deseada con el elemento seleccionado
+//	                    System.out.println("Elemento seleccionado: " + seleccionado);
+//	                }
+	            }
+	        });
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 	}
-	
-	
-	
+
 //SE_MUESTRAN_ESTOS_BOTONES_DESPUES_DE_SELECCIONAR_A_UN_ALUMNO_EN_LA_JLIST
 
 	public void mostrarbotones() {
