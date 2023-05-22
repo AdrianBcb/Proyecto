@@ -8,7 +8,7 @@ public class metodos {
 	
 	static String url1 = "jdbc:mysql://127.0.0.1:3306/escuela";
     static String user = "root";
-    static  String password = "05Lanabe";
+    static  String password = "Tredex$03";
     
     
     
@@ -35,20 +35,21 @@ public class metodos {
 	
 	
 	
-	public alumnos buscar(String busca) {
-	
-	alumnos a = new alumnos(busca, busca, busca, busca, busca, busca, busca);
-	return a;
+	public boolean buscar(String busca) {
+		try {
+			 Connection MyConn = DriverManager.getConnection(url1, user, password);
+			 Statement myStmt  = MyConn.createStatement();
+			// Select *from alumnos Where Nombre="Juan";
+			 String sql = "Select *from alumnos Where Nombre="+"'"+busca+"'";
+		     myStmt.executeQuery(sql);
+		     return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+	    }
 	//lo mismo pero mas chido a prueba de errores
 }
-	
-	
-	
-	
-	
-	
-	
-	
 	public void eliminar(alumnos a) {
 	//este yo lo hago
 }

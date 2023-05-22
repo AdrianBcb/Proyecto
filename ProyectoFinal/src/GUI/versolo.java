@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class versolo extends JPanel {
 	/**
@@ -61,13 +62,16 @@ public class versolo extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String nombreabuscar = textField.getText();
 				//bien puede un try aqui por si acaso
-				alumnos resultado = m.buscar(nombreabuscar);
+				
+				boolean resultado = m.buscar(nombreabuscar);
 				
 				//es_AQUI_DONDE_SE_DECIDE_SI_SE_MUESTRAN_LOS_BOTONES_O_NO
-				if (resultado!=null) {
+				if (resultado!=false) {
 					mostrarbotones();
+					JOptionPane.showMessageDialog(btn_buscar, "Se ha encontrado a"+nombreabuscar);
 				}else {
 					quitarbotones();
+					JOptionPane.showMessageDialog(btn_buscar, "No se ha encontrado a"+nombreabuscar);
 				}
 			}
 		});
