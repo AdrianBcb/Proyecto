@@ -69,8 +69,12 @@ int i=0;
 				ResultSet resultado = m.verclase(claseamostrar);
 				try {
 					while(resultado.next()) {
-					//	resultado.get
-						String enclase = resultado.getString("Nombre")+"          "+ resultado.getString("Apellidos");
+						alumnos a = new alumnos (resultado.getString("Nombre"),resultado.getString("Apellidos"),resultado.getString("Sexo")
+						,resultado.getString("Nacionalidad"),resultado.getString("Tutor"),resultado.getString("Telefono"),resultado.getString("Direccion"));
+						
+					//	a.getNombre()
+						String enclase = resultado.getString("Nombre")+"          "+ resultado.getString("Apellidos")+"          "
+						+resultado.getString("Tutor");
 						modelo.add(i, enclase);
 						i++;
 							}
@@ -117,31 +121,13 @@ int i=0;
 	        		}else {
 	        			quitarbotones();
 	        		}
-	        	
-//	            	
-//	            	
-//	                if (!e.getValueIsAdjusting()) {
-//	                    // Obtener el elemento seleccionado
-//	                    String seleccionado = list.getSelectedValue();
-//	                    // Realizar la acción deseada con el elemento seleccionado
-//	                    System.out.println("Elemento seleccionado: " + seleccionado);
-//	                }
+	      
 	            }
 	        });
 
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 	}
 
@@ -151,12 +137,21 @@ int i=0;
 		btn_quitar.setFocusPainted(false);
 		btn_quitar.setFont(new Font("Arial", Font.PLAIN, 16));
 		btn_quitar.setBounds(293, 327, 141, 27);
+		
+		btn_quitar.setFocusPainted(false);
+		btn_quitar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//	m.editar(alumno a);
+				
+			}
+		});
 		panel_centro.add(btn_quitar);
 		
 		btn_edit.setFocusPainted(false);
 		btn_edit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			//	m.editar(alumno a);
+				
 			}
 		});
 		btn_edit.setFont(new Font("Arial", Font.PLAIN, 16));

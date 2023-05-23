@@ -1,11 +1,11 @@
 package mysql;
 import java.sql.*;
 
-import GUI.verclase;
 import clases.alumnos;
 
 public class metodos {
-	
+//	Luis Adrian Cocom Bacab
+// Didier Nathanael Sanchez Tzeec 
 	
 	
 	static String url1 = "jdbc:mysql://127.0.0.1:3306/escuela";
@@ -48,9 +48,30 @@ public class metodos {
 	    }
 	
 }
-	public void eliminar(alumnos a) {
+	
+	
+	
+	
+	
+	
+	public boolean eliminar(String nombre) {
+		try {
+			 Connection MyConn = DriverManager.getConnection(url1, user, password);
+			 Statement myStmt  = MyConn.createStatement();
+			 String sql = "Delete from alumnos Where Nombre = '"+nombre+"';";
+		     myStmt.executeQuery(sql);
+		     return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+	    }
 	//este yo lo hago
 }
+	
+	
+	
+	
 	
 	
 	public ResultSet verclase(String clase) {
@@ -68,10 +89,6 @@ public class metodos {
 		}
 		return null;
 	}
-	
-	
-	
-	
 	
 	
 	
