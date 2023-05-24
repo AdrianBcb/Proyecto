@@ -5,16 +5,20 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
-
+import javax.swing.table.DefaultTableModel;
 import clases.alumnos;
 import mysql.metodos;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 public class versolo extends JPanel {
 	/**
@@ -24,10 +28,14 @@ public class versolo extends JPanel {
 	private JTextField textField;
 	private metodos m = new metodos();
 	private JPanel panel_centro = new JPanel();
-
 	JList list = new JList();
 	JButton btn_quitar = new JButton("Dar de baja");
 	JButton btn_edit = new JButton("Editar Alumno");
+	private JTable table_Alumnos;
+	DefaultTableModel model = new DefaultTableModel();
+	
+	
+	//private JTextField textResultado;
 	
 
 	/**
@@ -53,40 +61,61 @@ public class versolo extends JPanel {
 		textField.setColumns(10);
 		textField.setBounds(147, 107, 251, 26);
 		panel_centro.add(textField);
-		
-		
-		
+		table_Alumnos = new JTable();
+		table_Alumnos.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+			}
+		));
+			table_Alumnos.setBounds(69, 216, 407, 63);
+			panel_centro.add(table_Alumnos);
+			model.addColumn("nombre");
+			model.addColumn("apellido");
+			model.addColumn("Tutor");
+			model.addColumn("Clase");
+			table_Alumnos.setModel(model);
+			model.addRow(new Object[] {"Nombre","Apellido","Tutor"});
 		JButton btn_buscar = new JButton("Buscar");
 		btn_buscar.setFocusPainted(false);
 		btn_buscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombreabuscar = textField.getText();
-				//bien puede un try aqui por si acaso
+				try {
+					String nombreabuscar = textField.getText();
+					ResultSet resultado = m.buscar(nombreabuscar);
+						while(resultado.next()) {
+							String Nombrea=resultado.getString("Nombre");
+							String Apellido=resultado.getString("Apellidos");
+							String Tutor=resultado.getString("Tutor");
+	//						String Asignatura=resultado.getString("Asignatura");
+							
+
+							model.addRow(new Object[] {Nombrea,Apellido,Tutor});
+						}
 				
-				boolean resultado = m.buscar(nombreabuscar);
-				
-				//es_AQUI_DONDE_SE_DECIDE_SI_SE_MUESTRAN_LOS_BOTONES_O_NO
-				if (resultado!=false) {
-					
-					//
-					mostrarbotones();
-					JOptionPane.showMessageDialog(btn_buscar, "Se ha encontrado a"+nombreabuscar);
-				}else {
-					quitarbotones();
-					JOptionPane.showMessageDialog(btn_buscar, "No se ha encontrado a"+nombreabuscar);
+				}catch ( SQLException h) {
+					// TODO Auto-generated catch block
+					h.printStackTrace();
 				}
-			}
-		});
+		}});
 		btn_buscar.setFont(new Font("Arial", Font.PLAIN, 16));
 		btn_buscar.setBounds(202, 173, 141, 27);
 		panel_centro.add(btn_buscar);
-		
-		JLabel lbl_fondo = new JLabel("");
-		lbl_fondo.setBounds(0, 0, 546, 380);
-		lbl_fondo.setIcon(new ImageIcon("img/fondo5.png"));
-
-		panel_centro.add(lbl_fondo);
-		
+				
+				
+//		table = new JTable();
+				
+				JLabel lbl_fondo = new JLabel("");
+				lbl_fondo.setBounds(0, 0, 546, 380);
+				lbl_fondo.setIcon(new ImageIcon("img/fondo5.png"));
+				
+						panel_centro.add(lbl_fondo);
+						
+//						textResultado = new JTextField();
+//						textResultado.setBounds(46, 178, 86, 20);
+//						panel_centro.add(textResultado);
+//						textResultado.setColumns(10);
+//		
 	}
 	public void mostrarbotones() {
 		//Quiero_ocultar_la_Jlist_y_los_ULTIMOS_DOS_BOTONES_PORFA_QUE_SOLO_SE_MUESTREN_SI_HUBO_RESULTADOS
