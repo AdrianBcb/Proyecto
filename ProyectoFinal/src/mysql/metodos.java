@@ -10,7 +10,7 @@ public class metodos {
 	
 	static String url1 = "jdbc:mysql://127.0.0.1:3306/escuela";
     static String user = "root";
-    static  String password = "05Lanabe";
+    static  String password = "Tredex$03";
     
     
     
@@ -34,17 +34,18 @@ public class metodos {
 	
 	
 	
-	public boolean buscar(String busca) {
+	public ResultSet buscar(String busca) {
 		try {
 			 Connection MyConn = DriverManager.getConnection(url1, user, password);
 			 Statement myStmt  = MyConn.createStatement();
-			 String sql = "Select * from alumnos Where Nombre="+"'"+busca+"'";
-		     myStmt.executeQuery(sql);
-		     return true;
+			 String sql = "Select * from alumnos Where Nombre = "+"'"+busca+"';";
+			 ResultSet myRs = myStmt.executeQuery(sql);
+			 //myStmt.executeQuery(sql);
+			 return myRs;
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			return null;
 	    }
 	
 }
